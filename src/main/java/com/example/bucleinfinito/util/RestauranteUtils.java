@@ -86,9 +86,4 @@ public class RestauranteUtils {
             return nombre;
         }
     }
-
-    // BAD PRACTICE [S125]: commented-out code
-    // public static boolean validarHorario(int hora) {
-    //     return (hora >= 13 && hora <= 15) || (hora >= 20 && hora <= 23);
-    // }
 }
