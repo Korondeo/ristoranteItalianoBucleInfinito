@@ -19,9 +19,6 @@ public class MesaController {
     @GetMapping("/mesas")
     public String listarMesas(Model model) {
         model.addAttribute("mesas", mesaRepository.findAll());
-        // BAD PRACTICE [S125]: commented-out code
-        // model.addAttribute("mesasInactivas", mesaRepository.findAll().stream()
-        //     .filter(m -> !m.isActiva()).collect(java.util.stream.Collectors.toList()));
         return "mesas/lista";
     }
 
