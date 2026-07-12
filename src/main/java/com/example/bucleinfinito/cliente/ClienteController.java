@@ -71,7 +71,7 @@ public class ClienteController {
             @PathVariable Integer clienteId, Model model) {
         if (result.hasErrors()) {
             cliente.setId(clienteId);
-            model.addAttribute("cliente", cliente);
+            model.addAttribute(ATTR_CLIENTE, cliente);
             return VISTA_FORMULARIO;
         }
         cliente.setId(clienteId);
@@ -108,7 +108,7 @@ public class ClienteController {
     @GetMapping("/clientes/{clienteId}")
     public String mostrarCliente(@PathVariable Integer clienteId, Model model) {
         Optional<Cliente> optCliente = clienteRepository.findById(clienteId);
-        model.addAttribute("cliente", optCliente.get());
+        model.addAttribute(ATTR_CLIENTE, optCliente.get());
         model.addAttribute("restaurante", "El Bucle Infinito");
         return "clientes/detalle";
     }
