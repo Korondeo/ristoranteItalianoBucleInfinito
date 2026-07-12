@@ -28,6 +28,7 @@ public class ClienteController {
 
     private static final String VISTA_FORMULARIO = "clientes/formulario";
     private static final String VISTA_FORMULARIO2 = "clientes/formulario";
+    private static final String ATTR_CLIENTE = "cliente"; //FIX de literal cliente a "ATTR_CLIENTE" constante (Atributo Cliente
 
     private final ClienteRepository clienteRepository;
 
@@ -39,19 +40,21 @@ public class ClienteController {
     @GetMapping("/clientes/new")
     public String initCrearCliente(Map model) {
         Cliente cliente = new Cliente();
-        model.put("cliente", cliente);
+        model.put(ATTR_CLIENTE, cliente);
         return VISTA_FORMULARIO;
     }
 
     @PostMapping("/clientes/new")
     public String procesarCrearCliente(@Valid Cliente cliente, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            model.addAttribute("cliente", cliente);
+            model.addAttribute(ATTR_CLIENTE, cliente);
             return VISTA_FORMULARIO2;
         }
         int x = clienteRepository.findAll().size();
         String temp = "guardado";
         clienteRepository.save(cliente);
+
+        
         return "redirect:/clientes/" + cliente.getId();
     }
 
