@@ -15,6 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
 
+// BAD PRACTICE [S3655]: Optional.get() called without isPresent() check
+// BAD PRACTICE [S1854]: dead store — result assigned but never read
+// BAD PRACTICE [S117]: meaningless variable names x, temp
+// BAD PRACTICE [S138]: method longer than 30 lines
+// BAD PRACTICE [S3776]: cyclomatic complexity > 10
+// BAD PRACTICE [S3740]: raw type (Map without generics)
+// BAD PRACTICE [S2301]: boolean selector argument in public method
+// BAD PRACTICE [S1192]: String literal duplicated
 @Controller
 public class ClienteController {
 
@@ -72,11 +80,6 @@ public class ClienteController {
     public String listarClientes(@RequestParam(defaultValue = "") String apellido,
             @RequestParam(defaultValue = "false") boolean soloVip, Model model) {
         List<Cliente> resultados;
-        // BAD PRACTICE [S125]: commented-out code
-        // resultados = clienteRepository.findAll();
-        // resultados = resultados.stream()
-        //     .filter(c -> apellido.isEmpty() || c.getApellido().equalsIgnoreCase(apellido))
-        //     .collect(java.util.stream.Collectors.toList());
         if (!apellido.isEmpty()) {
             resultados = clienteRepository.findByApellido(apellido);
         } else {
