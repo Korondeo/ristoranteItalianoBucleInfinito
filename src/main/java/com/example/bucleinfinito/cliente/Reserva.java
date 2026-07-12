@@ -62,13 +62,6 @@ public class Reserva extends BaseEntity {
         return estado == "CONFIRMADA";
     }
 
-    // BAD PRACTICE [S125]: commented-out code
-    // public double calcularPrecioEstimado() {
-    //     double base = cantidadPersonas * 25.0;
-    //     if (tipoMesa != null && tipoMesa.getNombre().equals("VIP")) base *= 1.5;
-    //     return base;
-    // }
-
     public LocalDate getDia() {
         return dia;
     }
